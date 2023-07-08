@@ -25,20 +25,33 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <form action="{{route('employee.create')}}" method="post" id="employee_form">
                                 <h3 class="register-heading">Apply as a Employee</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="first_name" placeholder="First Name *" value="" />
+                                             @if($errors->has('first_name'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('first_name') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Last Name *" value="" name="last_name" />
+                                             @if($errors->has('last_name'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('last_name') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Password *" value="" name="password" />
+                                             @if($errors->has('password'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('password') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control"  placeholder="Confirm Password *" value="" name="confirm_password"/>
+                                             @if($errors->has('confirm_password'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('confirm_password') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
@@ -56,6 +69,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="email" class="form-control" placeholder="Your Email *" value="" name="email"/>
+                                               @if($errors->has('email'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('email') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
                                             <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
@@ -69,37 +85,42 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" name="your_answer"/>
+                                             @if($errors->has('your_answer'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('your_answer') }}</span>
+                                    @endif
                                         </div>
                                         <input type="submit" class="btnRegister"  value="Register"/>
                                     </div>
                                 </div>
+</form>
                             </div>
                             <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <form>
                                 <h3  class="register-heading">Apply as a Hirer</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" name="first_name"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                            <input type="text" class="form-control" placeholder="Last Name *" value=""  name="last_name"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                            <input type="email" class="form-control" placeholder="Email *" value="" name="email"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" name="phone"/>
                                         </div>
 
 
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                            <input type="password" class="form-control" placeholder="Password *" value="" name="password"/>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value=""  name="confirm_password"/>
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control">
@@ -110,7 +131,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" name="your_answer"/>
                                         </div>
                                         <input type="submit" class="btnRegister"  value="Register"/>
                                     </div>
@@ -119,6 +140,73 @@
                         </div>
                     </div>
                 </div>
-
+<form>
             </div>
+@endsection
+
+@section('script')
+<script>
+   $(document).ready(function () {
+    $('#employee_form').validate({
+     rules: {
+       first_name: {
+          required: true
+       },
+        last_name: {
+          required: true
+       },
+       phone: {
+          required: true
+       },
+       security_question: {
+          required: true
+       },
+       your_answer: {
+          required: true
+       },
+       gender: {
+          required: true
+       },
+       email: {
+          required: true
+       },
+       password: {
+          required: true
+       },
+       confirm_password: {
+          required: true
+       },
+    },
+    messages: {
+       first_name: {
+          required: "first_name is required"
+       },
+       last_name: {
+          required: "last_name is required"
+       },
+       phone: {
+          required: "phone is required"
+       },
+       security_question: {
+          required: "security_question is required"
+       },
+       your_answer: {
+          required: "your_answer is required"
+       },
+       gender: {
+          required: "gender is required"
+       },
+       email: {
+          required: "email is required"
+       },
+       password: {
+          required: "password is required"
+       },
+       confirm_password: {
+          required: "Rconfirm_password is required"
+       },
+    },
+   });
+   });
+</script>
 @endsection

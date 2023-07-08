@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\employee;
+use App\Models\Hirer;
 
 use Illuminate\Http\Request;
 
@@ -30,7 +32,7 @@ class UserController extends Controller
         $employee->password = $request->password;
         $employee->confirm_password = $request->confirm_password;
         $employee->save();
-       return redirect()->route('employee.index')->with('success', 'Employee Created Successfully!.');
+       return redirect()->route('register')->with('success', 'Employee Created Successfully!.');
        
 }
 }

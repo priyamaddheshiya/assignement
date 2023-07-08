@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('register');
 });
-Route::post('/', 'UserController@create')->name('users.store');
+
+Route::post('/employee/create', [userController::class, 'create'])->name('employee.create');
+Route::post('/hirer/create', [userController::class, 'hirerCreate'])->name('hirer.create');
