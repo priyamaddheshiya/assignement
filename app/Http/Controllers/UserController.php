@@ -15,6 +15,7 @@ class UserController extends Controller
     }
    public function create(Request $request){
     $request->validate([
+      
             'first_name'=> 'required',
             'last_name'=> 'required',
             'phone'=> 'required|string',
