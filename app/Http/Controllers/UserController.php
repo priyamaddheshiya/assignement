@@ -15,8 +15,8 @@ class UserController extends Controller
             'your_answer'=> 'required',
             'gender'=> 'required',
             'email'=> 'required',
-            'password'=> 'required',
-            'confirm_password'=> 'required',
+           'password' => 'required|min:6', 
+         'confirm_password' => 'required|same:password',
         ]);
 
            $employee = new RegisterModel();
