@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/employee', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/employee/create', [UserController::class, 'create'])->name('employee.create');
+Route::post('/hirer/create', [UserController::class, 'createHirer'])->name('hirer.create');

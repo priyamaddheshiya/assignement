@@ -17,7 +17,7 @@ class UserController extends Controller
     $request->validate([
             'first_name'=> 'required',
             'last_name'=> 'required',
-            'phone'=> 'required',
+            'phone'=> 'required|string',
             'security_question' => 'required',
             'your_answer'=> 'required',
             'gender'=> 'required',
@@ -37,6 +37,34 @@ class UserController extends Controller
         $employee->password = $request->password;
         $employee->confirm_password = $request->confirm_password;
         $employee->save();
+       return redirect()->route('register')->with('success', 'Employee Created Successfully!.');
+       
+}
+
+  public function createHirer(Request $request){
+    $request->validate([
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'phone'=> 'required|string',
+            'security_question' => 'required',
+            'your_answer'=> 'required',
+            
+            'email'=> 'required',
+           'password' => 'required|min:6', 
+         'confirm_password' => 'required|same:password',
+        ]);
+
+           $hirer = new Hirer();
+        $hirer->first_name = $request->first_name;
+        $hirer->last_name = $request->last_name;
+        $hirer->phone = $request->phone;  
+        $hirer->security_question = $request->security_question;
+        $hirer->your_answer = $request->your_answer;
+        
+        $hirer->email = $request->email;
+        $hirer->password = $request->password;
+        $hirer->confirm_password = $request->confirm_password;
+        $hirer->save();
        return redirect()->route('register')->with('success', 'Employee Created Successfully!.');
        
 }
