@@ -19,15 +19,16 @@ class UserController extends Controller
          'confirm_password' => 'required|same:password',
         ]);
 
-           $employee = new RegisterModel();
-        $employee->name = $request->name;
-        $employee->designation = $request->designation;
-        $employee->mobile_no = $request->mobile_no;  
-        $employee->address = $request->address;
-        $employee->age = $request->age;
-        $employee->joining_date = $request->joining_date;
-        $employee->leave_date = $request->leave_date;
-        $employee->relieving_date = $request->relieving_date;
+           $employee = new employee();
+        $employee->first_name = $request->first_name;
+        $employee->last_name = $request->last_name;
+        $employee->phone = $request->phone;  
+        $employee->security_question = $request->security_question;
+        $employee->your_answer = $request->your_answer;
+        $employee->gender = $request->gender;
+        $employee->email = $request->email;
+        $employee->password = $request->password;
+        $employee->confirm_password = $request->confirm_password;
         $employee->save();
        return redirect()->route('employee.index')->with('success', 'Employee Created Successfully!.');
        

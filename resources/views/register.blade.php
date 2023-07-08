@@ -29,25 +29,25 @@
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="first-name" placeholder="First Name *" value="" />
+                                            <input type="text" class="form-control" name="first_name" placeholder="First Name *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" name="last_name" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                            <input type="password" class="form-control" placeholder="Password *" value="" name="password" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" name="confirm_password"/>
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
                                                 <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <input type="radio" name="gender" value="male" name="gender" checked>
                                                     <span> Male </span> 
                                                 </label>
                                                 <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
+                                                    <input type="radio" name="gender" name="gender" value="female">
                                                     <span>Female </span> 
                                                 </label>
                                             </div>
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                            <input type="email" class="form-control" placeholder="Your Email *" value="" name="email"/>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
