@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function showRegistrationForm()
+    {
+        return view('register');
+    }
    public function create(Request $request){
     $request->validate([
             'first_name'=> 'required',
@@ -35,4 +40,5 @@ class UserController extends Controller
        return redirect()->route('register')->with('success', 'Employee Created Successfully!.');
        
 }
+
 }

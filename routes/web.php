@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,8 @@ use App\Http\Controllers\userController;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return view('welcome');
 });
 
-Route::post('/employee/create', [userController::class, 'create'])->name('employee.create');
-Route::post('/hirer/create', [userController::class, 'hirerCreate'])->name('hirer.create');
+Route::get('/employee', [UserController::class, 'showRegistrationForm'])->name('register');
+Route::post('/employee/create', [UserController::class, 'create'])->name('employee.create');

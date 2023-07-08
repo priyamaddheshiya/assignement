@@ -26,6 +26,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <form action="{{route('employee.create')}}" method="post" id="employee_form">
+                                       @csrf
                                 <h3 class="register-heading">Apply as a Employee</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
@@ -74,10 +75,13 @@
                                     @endif
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                            <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="" />
+                                               @if($errors->has('phone'))
+                                        <span class="validation_error" style="color:red">{{ $errors->first('phone') }}</span>
+                                    @endif
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control">
+                                            <select class="form-control" name="security_question">
                                                 <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
                                                 <option>What is your Birthdate?</option>
                                                 <option>What is Your old Phone Number</option>
